@@ -32,12 +32,10 @@ Docker-symfony gives you everything you need for developing Symfony application.
     **Note:** For **OS X**, please take a look [here](https://docs.docker.com/docker-for-mac/networking/) and for **Windows** read [this](https://docs.docker.com/docker-for-windows/#/step-4-explore-the-application-and-run-examples) (4th step).
 
 4. Prepare Symfony app
-    1. Update app/config/parameters.yml
-
-        ```yml
-        # path/to/your/symfony-project/app/config/parameters.yml
-        parameters:
-            database_host: db
+    1. Update your .env file
+        ```
+        # path/to/your/symfony-project/.env
+            DATABASE_HOST=db
         ```
 
     2. Composer install & create database
@@ -45,12 +43,6 @@ Docker-symfony gives you everything you need for developing Symfony application.
         ```bash
         $ docker-compose exec php bash
         $ composer install
-        # Symfony2
-        $ sf doctrine:database:create
-        $ sf doctrine:schema:update --force
-        # Only if you have `doctrine/doctrine-fixtures-bundle` installed
-        $ sf doctrine:fixtures:load --no-interaction
-        # Symfony3
         $ sf3 doctrine:database:create
         $ sf3 doctrine:schema:update --force
         # Only if you have `doctrine/doctrine-fixtures-bundle` installed
@@ -63,8 +55,7 @@ Docker-symfony gives you everything you need for developing Symfony application.
 
 Just run `docker-compose up -d`, then:
 
-* Symfony app: visit [symfony.dev](http://symfony.dev)  
-* Symfony dev mode: visit [symfony.dev/app_dev.php](http://symfony.dev/app_dev.php)  
+* Symfony app: visit [symfony.dev](http://symfony.dev)
 * Logs (Kibana): [symfony.dev:81](http://symfony.dev:81)
 * Logs (files location): logs/nginx and logs/symfony
 
