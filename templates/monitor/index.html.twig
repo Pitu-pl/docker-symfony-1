@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monitors{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Monitory</h1>
+    <h2>Dodaj nowy</h2>
+    {{ form_start(form, {'action': path('monitor_add'), 'method': 'POST'}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <div>
+        {% for monitor in monitors %}
+            <div>{{ monitor.name }}
+                (kody:
+                {% if monitor.collection %}
+                    {{ monitor.collection.codes.count }}
+                {% else %}
+                    0
+                {% endif %})
+                <a href="{{ path('monitor_edit', {'monitor': monitor.id}) }}">Edytuj</a><a href="{{ path('monitor_remove', {'monitor': monitor.id}) }}">Usuń</a></div>
+        {% else %}
+            <li>Brak</li>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kolekecje kodów{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Edycja</h1>
+    <h2><a href="{{ path('collection') }}">Wróć do listy</a></h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div><div id="edit_collection_codes_1"><div><label for="edit_collection_codes_1_value" class="required">Value</label><input type="text" id="edit_collection_codes_1_value" name="edit_collection[codes][1][value]" required="required" maxlength="256" /></div></div></div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

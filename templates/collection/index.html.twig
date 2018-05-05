@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Collections{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Kolekecje kodów</h1>
+    <h2>Dodaj nowy</h2>
+    {{ form_start(form, {'action': path('collection_add'), 'method': 'POST'}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+    <div>
+        {% for collection in collections %}
+            <div>{{ collection.name }}<a href="{{ path('collection_edit', {'collection': collection.id}) }}">Edytuj</a><a href="{{ path('collection_remove', {'collection': collection.id}) }}">Usuń</a></div>
+        {% else %}
+            <li>Brak</li>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
